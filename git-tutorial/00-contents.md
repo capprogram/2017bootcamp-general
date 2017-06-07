@@ -47,5 +47,5 @@ This tutorial borrows heavily from [Software Carpentry's](http://software-carpen
 
 ## 4. Additional Resources
 
-1. [Git cheat sheet](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf)
+1. [Git cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)
 2. [Quick overview](http://rogerdudler.github.io/git-guide/)
