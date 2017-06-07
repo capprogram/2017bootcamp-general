@@ -241,7 +241,7 @@ but *not* commit the work we're doing on the conclusion
 To allow for this,
 Git has a special *staging area*
 where it keeps track of things that have been added to
-the current [change set](reference.html#change-set)
+the current change set
 but not yet committed.
 
 ## Staging Area
@@ -253,15 +253,15 @@ and `git commit` then *actually takes* the snapshot, and
 makes a permanent record of it (as a commit).
 If you don't have anything staged when you type `git commit`,
 Git will prompt you to use `git commit -a` or `git commit --all`,
-which is kind of like gathering *everyone* for the picture!
+which takes a snapshot of all files in the repository.
 However, it's almost always better to
-explicitly add things to the staging area, because you might
-commit changes you forgot you made. (Going back to snapshots,
-you might get the extra with incomplete makeup walking on
-the stage for the snapshot because you used `-a`!)
+explicitly add things to the staging area, because if you just
+take a snapshot of everything, you might
+commit changes you forgot you made.
 Try to stage things manually,
-or you might find yourself searching for "git undo commit" more
-than you would like!
+or you might find yourself trying to figure out how to
+undo commits way too often.
+(Yes, it's possible, we'll get to that when we "explore history".)
 
 
 ![The Git Staging Area](fig/git-staging-area.png)
