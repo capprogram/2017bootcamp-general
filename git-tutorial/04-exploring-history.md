@@ -7,9 +7,9 @@ As we saw in the previous lesson, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
-We've been adding one line at a time to `mars.txt`, so it's easy to track our
-progress by looking, so let's do that using our `HEAD`s.  Before we start,
-let's make a change to `mars.txt`.
+We've been adding one line at a time to `mars.txt`, so it's been easy to track our
+progress just by looking at it, but now let's track progress "using our HEADs" (ha ha).  First,
+make one more change to `mars.txt`.
 
 ```
 $ vi mars.txt
@@ -37,9 +37,7 @@ index b36abfd..0848c8d 100644
 ```
 
 
-which is the same as what you would get if you leave out `HEAD` (try it).  The
-real goodness in all this is when you can refer to previous commits.  We do
-that by adding `~1` (note the use of a tilde, not a minus sign) to refer to the commit one before `HEAD`.
+This is the same as what you would get if you leave out `HEAD` (try it).  The real power of HEAD is as a starting point for counting backward in the history of commits.  For example, by adding `~1` (note the use of a tilde, not a minus sign), we can refer to the commit one before `HEAD`.
 
 ```
 $ git diff HEAD~1 mars.txt
@@ -76,9 +74,9 @@ index df0654a..b36abfd 100644
 
 
 In this way,
-we can build up a chain of commits.
+we revisit a chain of commits.
 The most recent end of the chain is referred to as `HEAD`;
-we can refer to previous commits using the `~` notation,
+and we refer to previous commits using the `~` notation,
 so `HEAD~1` (pronounced "head minus one")
 means "the previous commit",
 while `HEAD~123` goes back 123 commits from where we are now.
@@ -125,7 +123,7 @@ index df0654a..b36abfd 100644
 
 
 All right! So
-we can save changes to files and see what we've changed—now how
+we can save changes to files and see what we've changed. Now how
 can we restore older versions of things?
 Let's suppose we accidentally overwrite our file:
 
