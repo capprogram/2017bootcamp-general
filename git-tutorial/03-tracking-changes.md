@@ -261,7 +261,7 @@ commit changes you forgot you made.
 Try to stage things manually,
 or you might find yourself trying to figure out how to
 undo commits way too often.
-(Yes, it's possible, we'll get to that when we "explore history".)
+(Yes, it's possible to undo commits, we'll get to that when we "explore history".)
 
 
 ![The Git Staging Area](fig/git-staging-area.png)
