@@ -199,10 +199,6 @@ must use the commit number that identifies the state of the repository
 *before* that change.
 A common mistake is to use the number of
 the commit in which we made the change we're trying to get rid of.
-In the example below, we want to retrieve the state from before the most
-recent commit (`HEAD~1`), which is commit `f22b25e`:
-
-![Git Checkout](fig/git-checkout.png)
 
 So, to put it all together,
 here's how Git works in cartoon form:
@@ -245,16 +241,16 @@ you can remove your change.
 
 ## Explore and Summarize Histories
 
-Exploring history is an important part of git, often it is a challenge to find
+Exploring history is an important part of git, and often it is a challenge to find
 the right commit ID, especially if the commit is from several months ago.
 
 Imaging the `planets` project has more than 50 files.
-You would like to find a commit with specific text in `mars.txt` is modified.
+You would like to find a commit in which specific text in `mars.txt` is modified.
 When you type `git log`, a very long list appeared,
 How can you narrow down the search?
 
-Recorded that the `git diff` command allow us to explore one specific file,
-e.g. `git diff mars.txt`. We can apply the similar idea here.
+Recall that the `git diff` command allows us to explore one specific file,
+e.g. `git diff mars.txt`. We can apply a similar idea here.
 
 ```
 $ git log mars.txt
@@ -264,8 +260,8 @@ $ git log mars.txt
 Unfortunately some of these commit messages are very ambiguous e.g. `update files`.
 How can you search through these files?
 
-Both `git diff` and `git log` are very useful and they summarize different part of the history for you.
-Is that possible to combine both? Let's try the following:
+Both `git diff` and `git log` are very useful and they summarize different parts of the history for you.
+Is it possible to combine both? Let's try the following:
 
 ```
 $ git log --patch mars.txt
