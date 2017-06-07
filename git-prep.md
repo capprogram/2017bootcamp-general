@@ -1,8 +1,6 @@
 # 1. Sign up for GitHub
 
-1. Visit https://github.com/ and pick a username to set up an account. You’ll probably use
-GitHub long past this class, so bear that in mind when deciding what email
-address to give.
+1. Visit https://github.com/ and pick a username to set up an account. You’ll probably use GitHub long past this boot camp, so bear that in mind when deciding what email address to give.
 
 2. Give us your username so we can invite you to join the `capprogram` organization.
 
