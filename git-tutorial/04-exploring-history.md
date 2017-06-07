@@ -185,18 +185,18 @@ $ git checkout f22b25e mars.txt
 
 to revert mars.txt to its state after the commit f22b25e.
 If you forget `mars.txt` in that command, git will tell you that "You are in
-'detached HEAD' state." In this state, you shouldn't make any changes.
-You can fix this by reattaching your head using `git checkout master`
+'detached HEAD' state" because you have literally checked out all the files from this earlier commit, prior to more recent commits up to HEAD. In this state, you shouldn't make any changes.
+You can recover by reattaching your head using `git checkout master`
 
 If you were trying to revert not just one file but a whole commit, then you want to
 go back to master (`git checkout master`) and use either `git reset --hard [commit ID]` or `git revert [commit ID]`. 
 The former will erase all commits after that ID while the latter will make a new commit undoing your changes starting
 from that ID, thus preserving the history of wrong commits. Alternatively, 
-you can start a new branch from an entire previous status of the master branch when you're in the detached HEAD state. Just don't make changes to master when in that state.
+you can start a new branch from an entire previous status of the master branch when you're in the detached HEAD state (see "Working with branches"). Just don't make changes to master when in that state.
 
-It's important to remember that
-we must use the commit number that identifies the state of the repository
-*before* the change we're trying to undo.
+It's important to remember that if you want to undo a change, you
+must use the commit number that identifies the state of the repository
+*before* that change.
 A common mistake is to use the number of
 the commit in which we made the change we're trying to get rid of.
 In the example below, we want to retrieve the state from before the most
