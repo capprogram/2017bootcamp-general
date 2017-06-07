@@ -37,7 +37,7 @@ index b36abfd..0848c8d 100644
 ```
 
 
-This is the same as what you would get if you leave out `HEAD` (try it).  The real power of HEAD is as a starting point for counting backward in the history of commits.  For example, by adding `~1` (note the use of a tilde, not a minus sign), we can refer to the commit one before `HEAD`.
+This is the same as what you would get if you leave out `HEAD` (try it).  The real power of HEAD comes into play when we use it as a starting point for counting backward in the history of commits.  For example, by adding `~1` (note the use of a tilde, not a minus sign), we can refer to the commit one before `HEAD`.
 
 ```
 $ git diff HEAD~1 mars.txt
