@@ -1,6 +1,6 @@
 # Setup python on department linux machines
 
-For the purposes of this class we will use an anaconda installation of python as opposed to system python. This will allow us to use additional packages and keep a consistent python experience across machines/operating systems. To get started open a terminal on a UNC linux machine type
+We will use a custom Anaconda installation of python as opposed to whatever python is already installed on the linux system. This will allow us to add packages and keep a consistent python experience across machines/operating systems. To get started, open a terminal on a UNC linux machine and type
 
     unc_anaconda
     
