@@ -8,7 +8,7 @@ This will load you into a bash (differences with tcsh are negligible for general
 
     conda create --name astro scikit-learn matplotlib astropy pymc spyder pandas
 
-This will create an anaconda environment named `astro` in your home directory (`~/.conda/envs/astro`), with the packages that you need for this class. To activate this environment type
+This will create an anaconda environment named `astro` in your home directory (`~/.conda/envs/astro`), with the packages that you need for our purposes. To activate this environment type
 
     source activate astro
     
