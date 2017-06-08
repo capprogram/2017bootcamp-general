@@ -12,14 +12,13 @@ This will create an anaconda environment named `astro` in your home directory (`
 
     source activate astro
     
-You are now your own anaconda environment, and your terminal prompt should start with `(astro)(anaconda_bash)...`. To finish installing packages we will use for this class type the following
+You are now your own anaconda environment, and your terminal prompt should start with `(astro)(anaconda_bash)...`. To install a few more packages you may use for other tutorials type the following
 
     conda install -c OpenAstronomy healpy
     pip install git+https://github.com/astroML/astroML
     conda install nb_conda_kernels
+    conda install -c astrophy emcee=2.2.1
     
-The first line installs healpy through anaconda.org, and the second installs the most up to data version of astroML through the github repository.
-
 Note that the above steps are a one time setup. If you ever want to use the anaconda environment you have set up all you have to do is type
 
     unc_anaconda
