@@ -1,5 +1,5 @@
 # I. Useful commands     
-(play with these and/or discuss with instructor)
+# (play with these and/or discuss with instructor)
 
 alias    
 enscript    
@@ -16,7 +16,7 @@ ps aux | grep username
 kill -9 #    
 top    
 
-# II. The best thing since sliced bread: 'screen'    
+# II. The best thing since sliced bread: `screen`    
 
 if your processes run under "screen" are slowing down:     
 0) Log into whatever machine you want to run the job.     
