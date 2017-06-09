@@ -1,5 +1,5 @@
 # I. Useful commands     
-# (play with these and/or discuss with instructor)
+## (play with these and/or discuss with instructor)
 
 alias    
 enscript    
@@ -18,9 +18,8 @@ top
 
 # II. The best thing since sliced bread: `screen`    
 
-if your processes run under "screen" are slowing down:     
-0) Log into whatever machine you want to run the job.     
-1) Create a new PAG by running "pagsh -c /bin/tcsh" PAG stands for process authentication group. This way you can start a set of processes that share the same authentication token and they are isolated from your other processes.     
+If your processes run under "screen" are slowing down:        
+1) On whatever machine you want to run the job, create a new PAG by running "pagsh -c /bin/tcsh" PAG stands for process authentication group. This way you can start a set of processes that share the same authentication token and they are isolated from your other processes.     
 2) start a new screen session     
 3) run "reauth" You will be prompted for your password, which will be used to renew your tokens periodically. Remember the PID that reauth tell you, or figure it out later using "ps aux | grep youronyengoeshere"     
 4) start python and run job     
@@ -32,4 +31,4 @@ if your processes run under "screen" are slowing down:
 
 Linux can be used as a programming language as well as an operating system -- this is called linux scripting. Most linux scripting capabilities can be accomplished in python, but with reduced efficiency. 
 
-This optional [linux scripting tutorial](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscripting.txt) is best completed after you are comfortable with both linux and the basics of programming in any language. The tutorial goes with this [bashscriptingsolutions](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscriptingsolutions/) directory and this [bashscriptingfinalpuzzle](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscriptingfinalpuzzle/) directory.
+This optional [linux scripting tutorial](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscripting.txt) is best completed after you are comfortable with both linux and the basics of programming in any language. The tutorial goes with this [bashscriptingsolutions](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscriptingsolutions/) directory and this [bashscriptingfinal](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscriptingfinal/) directory.
