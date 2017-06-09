@@ -1,4 +1,5 @@
-# I. Useful commands (play with these and/or discuss with instructor)
+# I. Useful commands     
+(play with these and/or discuss with instructor)
 
 alias    
 enscript    
