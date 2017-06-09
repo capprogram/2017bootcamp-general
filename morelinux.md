@@ -29,4 +29,6 @@ if your processes run under "screen" are slowing down:
 
 # III. Linux scripting
 
-Linux can be used as a programming language as well as an operating system -- this is called linux scripting. [This tutorial]() is optional and best completed after you are comfortable with both linux and the basics of programming (in any language).
+Linux can be used as a programming language as well as an operating system -- this is called linux scripting. Most linux scripting capabilities can be accomplished in python, but with reduced efficiency. 
+
+This optional [linux scripting tutorial](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscripting.txt) is best completed after you are comfortable with both linux and the basics of programming in any language. The tutorial goes with this [bashscriptingsolutions](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscriptingsolutions/) directory and this [bashscriptingfinalpuzzle](https://github.com/capprogram/2017bootcamp-general/blob/master/bashscriptingfinalpuzzle/) directory.
