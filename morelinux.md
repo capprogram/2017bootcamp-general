@@ -1,5 +1,6 @@
-# I. Useful commands     
-## (play with these and/or discuss with instructor)
+# I. Useful commands
+
+Investigate the man pages for these handy commands and/or ask your instructor for a demo.
 
 alias    
 enscript    
@@ -17,6 +18,8 @@ kill -9 #
 top    
 
 # II. The best thing since sliced bread: `screen`    
+
+Screen is useful anytime you want to be able to start a job, disconnect from the machine running it, then reconnect to the machine and the job later. For example, maybe you have to go home for dinner and want to be able to start a program running, log out, go home, and log in later from home to check on the program. Alternatively, maybe you're working on a flaky wireless connection and you want to be able to start a program running with the peace of mine that you can get back to it if your connection goes down while it's running. In both cases, the solution is to start a "screen" -- a terminal window that can be detached and reattached to different physical terminals. The basic sequence is to type "screen", then a series of commands that starts your program, then ctrl-a d to detach, then later "screen -dR" to reattach. More complicated options are explained in the man pages.
 
 If your processes run under "screen" are slowing down:        
 1) On whatever machine you want to run the job, create a new PAG by running "pagsh -c /bin/tcsh" PAG stands for process authentication group. This way you can start a set of processes that share the same authentication token and they are isolated from your other processes.     
