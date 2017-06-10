@@ -10,14 +10,14 @@ Copy all &quot;.py&quot; files in https://github.com/capprogram/2017bootcamp-gen
 
 There are two ways to generate random numbers:
 
-- .physical measurements that are expected to be random (e.g., coin flips)
-- .computational algorithms that produce long sequences of apparently random results, in fact completely determined by an initial &quot;seed&quot; value
+- physical measurements that are expected to be random (e.g., coin flips)
+- computational algorithms that produce long sequences of apparently random results, in fact completely determined by an initial &quot;seed&quot; value
 
 The latter are often called _pseudo-random_ number generators.
 
-Please look over the description of the &quot;random&quot; package for python here: [http://docs.python.org/2/library/random.html](http://docs.python.org/2/library/random.html)
+Look over the description of the &quot;random&quot; package for python here: [http://docs.python.org/2/library/random.html](http://docs.python.org/2/library/random.html)
 
-(Check out the Mersenne Twister on the internet – it&#39;s not an amusement park ride!)
+Check out the Mersenne Twister on the internet – it&#39;s not an amusement park ride!
 
 **Exercise 1:** Use _random.random_ to generate a variable x consisting of 10 random numbers between 0 and 1. Repeat to create a second random variable y, and plot x and y against each other. Verify that there is no correlation.
 
