@@ -74,6 +74,6 @@ Random number generation is useful in many contexts. For example, you may wish t
 
 [http://www.ligo.org/news/blind-injection.php](http://www.ligo.org/news/blind-injection.php)
 
-Another technique that relies on Monte Carlo methods is &quot;bootstrapping,&quot; actually a family of techniques all of which use random resampling of a real data set to estimate the uncertainties on parameters or model fits characterizing that data set.
+Another technique that relies on Monte Carlo methods is &quot;bootstrapping,&quot; actually a family of techniques all of which use random resampling of a real data set to estimate the uncertainties on parameters or model fits characterizing that data set. We'll return to bootstrapping in another tutorial.
 
 [http://en.wikipedia.org/wiki/Bootstrapping\_%28statistics%29](http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29)
