@@ -4,7 +4,7 @@
 
 > _&quot;Monte Carlo methods&quot; is a term covering pretty much any use of pseudo-randomness to help solve any kind of problem._ – Niall O&#39;Higgins
 
-Copy all &quot;.py&quot; files in https://github.com/capprogram/2017bootcamp-general/MonteCarloTutorial to your own working space – these files include partial answers to the exercises below, left incomplete for you to finish. Select exercises have solutions provided with a &quot;.solns&quot; extension. You should perform this tutorial in Anaconda under a Windows/Mac/Linux OS.
+Copy all &quot;.py&quot; files in https://github.com/capprogram/2017bootcamp-general/tree/master/MonteCarloTutorial to your own working space – these files include partial answers to the exercises below, left incomplete for you to finish. Select exercises have solutions provided with a &quot;.solns&quot; extension. You should perform this tutorial in Anaconda under a Windows/Mac/Linux OS.
 
 # I. Random Number Generators
 
@@ -34,9 +34,11 @@ The Gaussian distribution is the most commonly used model for random uncertainti
 
 2. The signal-to-noise (S/N) ratios for data values representing &quot;detections&quot; are typically given in terms of the background noise (i.e., S/N=3 means S=3&sigma; (caveat: if the signal is extended in time/space/&lambda;/etc., it is really a sum of several data points and you must use error propagation rules)
 
-From the diagram, we see a S/N&gt;3 detection has only 0.1% probability of occurring by chance, so we say it is detected &quot;at 99.9% confidence.&quot; For data values, the error bars are referred to as &quot;confidence intervals.&quot; From the diagram, &plusmn;1&sigma; corresponds to the &quot;68% confidence interval.&quot;
+From the diagram, we see a S/N&gt;3 "detection" has only 0.1% probability of occurring by chance, so people generally say a measurement at S/N=3 is detected &quot;at 99.9% confidence.&quot; (Strictly speaking this is incorrect; see reading on the p-value crisis.)
 
-_The python package &quot;numpy&quot; enables array math. The solutions to Exercises 3 &amp; 4 illustrate some of what you can do with numpy._
+For data values, the error bars are referred to as &quot;confidence intervals.&quot; From the diagram, &plusmn;1&sigma; corresponds to a &quot;68% confidence interval.&quot;
+
+_Recall that the python package &quot;numpy&quot; enables array math. The solutions to Exercises 3 &amp; 4 illustrate some of what you can do with numpy._
 
 Import numpy and use it to compute and overplot the expected Gaussian function shape on top of the histogram you made.
 
