@@ -26,7 +26,7 @@ Check out the Mersenne Twister on the internet – it&#39;s not an amusement par
 **Exercise 3:** Use _random.gauss_ to generate a variable u (for &quot;uncertainty&quot;) consisting of 1000 random numbers with mean zero and standard deviation &sigma; = 1. Create a histogram of the values to verify that they look like a Gaussian distribution <img src="https://latex.codecogs.com/png.latex?\frac{1}{\sigma\sqrt{2\pi}}\exp{\left(-\frac{u^2}{2\sigma^2}&space;\right&space;)}" />
 .
 
-![](https://github.com/capprogram/2017bootcamp-general/MonteCarloTutorial/blob/master/gaussianconfidenceintervals.png)
+![](https://github.com/capprogram/2017bootcamp-general/blob/master/MonteCarloTutorial/gaussianconfidenceintervals.png)
 
 The Gaussian distribution is the most commonly used model for random uncertainties (non-systematic errors/noise) in data.  In particular:
 
@@ -58,7 +58,7 @@ It may happen that you want to select random numbers from a distribution of your
 
 The probability of a point having a given radius increases with the area of the annulus that radius lies in, so <img src="https://latex.codecogs.com/png.latex?\inline&space;p(r)dr=\frac{2\pi&space;rdr}{\pi&space;R^2}" />where R is the radius of the circle. (Note that the integral <img src="https://latex.codecogs.com/png.latex?\inline&space;\int_0^Rp(r)dr=1" /> as is required for a probability distribution.) The trick to computing the (non-uniform) probability distribution for _r_ is to map values _x_ from a uniform distribution [0, 1] onto the values of _r_ in such a way that the correct frequency of values is produced. A one-to-one mapping in which the _integrated_ probability out to _r_ in [0, R] is equal to the integrated probability out to _x_ in [0, 1] does the trick. In &quot;inverse transform sampling,&quot; we first generate values using a uniform random number generator, then map them to values drawn from another probability distribution using this integral mapping.
 
-![](https://github.com/capprogram/2017bootcamp-general/MonteCarloTutorial/blob/master/randomdotsincircle.png)
+![](https://github.com/capprogram/2017bootcamp-general/blob/master/MonteCarloTutorial/randomdotsincircle.png)
 
 **Exercise 1:** First, use numpy&#39;s version of _random_ to select radii randomly in a circle by inverse transform sampling. Second, compare the distribution of radii selected by this method to the distribution of radii obtained by selecting &quot;hits&quot; in a circle as in Exercise 1 from Part II. (Note – the second task requires that you generate a new block of code, not just tweak the code provided. You should try to find bits of earlier code that you can copy/imitate/modify to make an array of radii, then plot the new radii in a histogram on top of a histogram of the original radii.) How do the histograms compare? Explain.
 
