@@ -1,0 +1,19 @@
+# Histograms, Kernel Density Estimation, and Hypothesis Tests for Comparing Distributions
+
+by Sheila Kannappan
+
+This activity will focus on displaying and comparing distributions. Refer to textbook sections 4.8 on histograms and choice of bin width, 6.1.1 pp. 251-3 on Kernel Density Estimation (KDE), and 4.7.2 on the Kolmogorov-Smirnov test and other distribution comparison tests.
+
+1. Read in "ECO_dr1_subset.csv" from this repo and extract the variables name, logmstar, urcolor, and cz. Define a selector "goodur" that rejects urcolor values of -99 (physical values generally lie between 0-3, so -99 indicates missing data).
+
+2. Using the version of "hist" in the astroML package, overplot histograms of the u-r color distribution with each of the three main types of fixed bin size optimization: Scott, Freedman-Diaconis, and Knuth. Comment on how Scott does your figure compared to Fig. 5.20. Try this again with "goodur" modified to add restrictions to logmstar > 10. and then to logmstar < 9.
+
+3. Overplot unbinned distributions using KDE. The astroML version of KDE has been superseded by a new version in scikit-learn -- see [http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html). You can experiment with different kernels and bandwidths; Ivezic et al. specify Epanechnikov as optimal but it has some ugly mathematical properties compared to a Gaussian. The bandwidth choice is much more important -- it has taken the place of the bin width as the quantity we must somehow optimize. The book suggests cross-validation and we'll look at cross-validation in a future tutorial, but for now we'll carry on assuming that half the Knuth bin width value is a good value for the band width. Again, compare KDE to the three main histogram options with "goodur" modified to add logmstar restrictions. Comment on how the peaks change using the different methods.
+
+4. Regardless of bandwidth and kernel optimization, it's always a good idea to check distribution features against common sense. For example, since ECO is volume-limited we might expect the same results if we split it into two subvolumes. Compare the galaxy color distributions for galaxies on the near and far side of redshift cz=5500 km/s. Apply the Kolmogorov-Smirnov (K-S) and Mann-Whitney U (M-W) tests in scipy's "stats" package and print the probabilities that the two samples were drawn from the same parent sample on the figure. Does your result make sense? (Hint: google "cosmic variance".)
+
+5. To avoid the pitfalls of cosmic variance, come up with a way to subdivide the sample that uses random index sampling to achieve fair, equal-size comparison subsamples. Because random samples can be randomly unfair, run your code a few times to find a division of the sample for which the K-S test doesn't register any significant difference in the color distributions. Notice the variety in pnull values as you repeatedly re-run the code and think about how this relates to the so-called "p-value crisis."
+
+Note: You can re-use a random subdivision you like by creating a flag with values 1 and 2 and saving it (`np.savez('crossvalidationflag',flag12=flag12)`), then re-loading it instead of re-running your random index sampler (`input = np.load("crossvalidationflag.npz")` followed by `flag12 = input['flag12']`).
+
+Solutions to this tutorial are [here](https://github.com/capprogram/2017bootcamp-general/blob/master/distributions.py).
