@@ -3,7 +3,7 @@
 
 # 7. Collaborating
 
-In section five of this tutorial you learned about branches. We will use branches to collaborate on projects in this class. 
+In section five of this tutorial you learned about branches. You can use branches to collaborate on projects. 
 
 For the next step, get into pairs.  One person will be the "Owner" and the other will be the "Collaborator". The goal is that the Collaborator add changes into the Owner's repository. We will switch roles at the end, so both persons will play Owner and Collaborator.
 
@@ -138,22 +138,22 @@ any changes. The basic collaborative workflow would be:
 
 ### Notes about branches:
 1. As all collaborators will have access to all the branches, make sure that your branch names reflect the kinds of changes that you intend to make. 
-2. If you have completed working on a branch and have merged all changes to master, you can delete it unless you plan to make further changes to reduce branch clutter (you can see the `delete branch` button at the bottom of successfull merged pull requests and delete local copies using `git branch -d branch_name`.
+2. If you have completed working on a branch and have merged all changes to master, you can delete it unless you plan to make further changes to reduce branch clutter (you can see the `delete branch` button at the bottom of successful merged pull requests and delete local copies using `git branch -d branch_name`).
 3. Keep as many branches as you need concurrently, but don't forget to make sure they are as up to date as possible with master - this will make it easier to merge any pull requests you submit on github.
 
 ### Other notes about collaborating
 1. It is better to make many commits with smaller changes rather than
-of one commit with massive changes: small commits are easier to
+one commit with massive changes: small commits are easier to
 read and review.
 2. Version control's ability to merge conflicting changes is another reason users tend to divide their programs and papers into multiple files instead of storing everything in one large file. There's another benefit too: whenever there are repeated conflicts in a particular file, the version control system is essentially trying to tell its users that they ought to clarify who's responsible for what, or find a way to divide the work up differently.
 
-Note `git pull` is really equivalent to running `git fetch` and then `git merge`, where `git fetch` updates your so-called "remote tracking branches" and `git merge` combines the two brances that were created locally and remotely (the latter is the "origin" branch in the local system nomenclature)
+Note `git pull` is really equivalent to running `git fetch` and then `git merge`, where `git fetch` updates your so-called "remote tracking branches" and `git merge` combines the two branches that were created locally and remotely (the latter is the "origin" branch in the local system nomenclature).
 
 ## Review Changes
 
 The Owner push commits to the repository without giving any information
 to the Collaborator. How can the Collaborator find out what has changed with
-command line?
+the command line?
 
 ```
 git fetch origin
@@ -170,7 +170,7 @@ code in the diff record, a blue comment icon (+ symbol) appears, which you can c
 ## Reverting a Commit
 
 Jennifer is collaborating on her Python script with her colleagues and
-realises her last commit to the group repository is wrong and wants to
+realizes her last commit to the group repository is wrong and wants to
 undo it.  Jennifer needs to undo correctly so everyone in the group
 repository gets the correct change.  `git revert [first wrong commit ID]`
 will make a new commit that undoes Jennifer's previous wrong

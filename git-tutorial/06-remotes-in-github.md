@@ -21,7 +21,7 @@ create a new repository called `planets`:
 
 ![Creating a Repository on GitHub (Step 1)](fig/github-create-repo-01.png)
 
-Name your repository "planets" and then click "Create Repository". **Don't check the initialize this ... box**:
+Name your repository "planets" and then click "Create Repository". **DON'T check the "Initialize this..." box**:
 
 ![Creating a Repository on GitHub (Step 2)](fig/github-create-repo-02.png)
 
