@@ -17,7 +17,7 @@ You are now your own anaconda environment, and your terminal prompt should start
     conda install -c OpenAstronomy healpy
     pip install git+https://github.com/astroML/astroML
     conda install nb_conda_kernels
-    conda install -c astrophy emcee=2.2.1
+    conda install -c astropy emcee=2.2.1
     
 Note that the above steps are a one time setup. If you ever want to use the anaconda environment you have set up all you have to do is type
 
