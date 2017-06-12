@@ -74,9 +74,10 @@ uncertainty?
 
 4) Read up on [np.polyfit](http://docs.scipy.org/doc/numpy/reference/generated/numpy.polynomial.polynomial.polyfit.html) <br><br>
 Use `np.polyfit` to compute the MLE slope and y-offset for the data set numerically rather than analytically. Do you get the same result as in the analytical case from #2 above?    
-
 Note that in this example we have assumed that the &sigma; on all data points is the same. This simplified assumption is often not the case. If the uncertainties are different, then we must include each data point's uncertainty within the MLE calculation. Although `np.polyfit` does not automatically take an array of uncertainties on the y value, we can input an optional weight vector: `fit=np.polyfit(xvals, yvals, 1, w=1/sig)` where `sig` is an array containing the uncertainty on each data point. Here the input is `1/sig` rather than `1/sig**2` as you might expect from the equations above. The `np.polyfit` function squares the weight value within the source code.    
 
 5) Now we'll compute the errors on the slope and intercept numerically, for comparison with the analytic calculation in #3. A quick method to determine uncertainties is to have `np.polyfit` compute the covariance matrix:
 <img src="https://latex.codecogs.com/png.latex?C=\begin{pmatrix}\sigma_a^2&cov(\alpha,\beta)\\cov(\alpha,\beta)&\sigma_\beta^2\end{pmatrix}"/> which is the inverse of the Hessian Matrix, consisting of second derivatives of the log likelihood with respect to different model parameters. (When these matrices get tricky to compute, we can resort to a more approximate numerical technique such as the bootstrap.)
 Add `cov="True"` to the `np.polyfit` function call so that `np.polyfit` will compute the covariance matrix numerically. Print out the uncertainties computed using the covariance matrix. Are they the same as found in the analytical solution? What happens to the uncertainties as you increase/decrease the number of data points? What happens to the _percentage difference_ between the analytical and numerical methods as you increase/decrease the number of data points?
+
+Solutions to the tutorial are in Download [paramfit1_soln.py](paramfit1_soln.py).
