@@ -33,7 +33,7 @@ Python can work with arrays of numbers, such as columns of data or tables of dat
 
 #### Interlude on Libraries
 
-Behind the scenes, Anaconda installs the libraries numpy, scipy, and matplotlib as well as many others to give you access to thousands of special functions. Every time you want to call one of these functions, you must first type the name of the library, followed by the name of the function like so `library.function`. Furthermore, the library must have been "imported" before you type this command, often under a nickname for conveninene (you don't have to type the whole name out everytime). The standard imports and nicknames will be using are 
+Behind the scenes, Anaconda installs the libraries numpy, scipy, and matplotlib as well as many others to give you access to thousands of special functions. Every time you want to call one of these functions, you must first type the name of the library, followed by the name of the function like so `library.function`. Furthermore, the library must have been "imported" before you type this command, often under a nickname for convenience (you don't have to type the whole name out everytime). The standard imports and nicknames will be using are 
 
 ```python
 import numpy as np		# basic numerical analysis
@@ -124,7 +124,7 @@ Extensive lists of additional functions can be found in the documentation for th
 Moreover, there are thousands of other python libraries we will not be using -- someday you may create your own library!
 
 ### Logging Your Work
-Now that you've seen the basics, let's start recording your work. To do this, you should paste all your successful commands from the History or Console window into the Editor window, where they will become a program (sequence of commands). Paste in the output from your successful commands, inserting a `#` comment character before each line of output so that python does not try to interpret the output as a command. The program file in the Editor window will initially be labeled `.temp.py` but you should save it under the new name `tutorialanswers_yournamehere.py` in a different folder that you will use for all your python files. Also put a comment at the top with your name and date. Now you can check your answers by saving and running your program with the `Save` (disk icon) and `Run` (green play arrow icon) buttons at the top of Spyder. You will submit your final program file as part of your homework.
+Now that you've seen the basics, let's start recording your work. To do this, you should paste all your successful commands from the History or Console window into the Editor window, where they will become a program (sequence of commands). Paste in the output from your successful commands, inserting a `#` comment character before each line of output so that python does not try to interpret the output as a command. The program file in the Editor window will initially be labeled `.temp.py` but you should save it under the new name `tutorialanswers_yournamehere.py` in a different folder that you will use for all your python files. Also put a comment at the top with your name and date. Now you can check your answers by saving and running your program with the `Save` (disk icon) and `Run` (green play arrow icon) buttons at the top of Spyder.
 
 At last, it's time to show off your new python skills "for the record."
 
@@ -134,7 +134,7 @@ At last, it's time to show off your new python skills "for the record."
 4. Multiply ratio times rootarray. Does the result make sense?
 5. Add a comment to your program file to answer the question from (4), i.e. explain why the result makes sense.
 
-The final version of your program file should contain only successful commands and their output -- please leave only your most brilliant work for the grader.
+The final version of your program file should contain only successful commands and their output (as comments).
 
 ## Part III: Reading and Plotting Data
 
@@ -174,4 +174,4 @@ Suppose you wanted to subselect certain data from your dataset for a legitimate 
 
 You can join multiple selection criteria together by using the `&` sign. Let's say rather than zooming in on your plot like we did earlier, you decide you just want to plot the data that meet certain criteria, i.e., temperature ranges from 80-100 and humidity from 10-40. To start this selection, write `sel2=np.where((temperature > 80) & (temperature < 100))`. Go ahead and overplot this selection: `plot(humidity[sel2],temperature[sel2],'g*',markersize=15)`. You should find that the overplotted symbols range from 80-100 in temperature. Finish the selection to restrict the humidity range from 10-40. Overplot using 'r+' (red plus signs). Put this final combined selection into your Editor file.
 
-To finalize your plot so you can submit it with your program file, first retitle the plot with your name and the assignment, e.g., `Jane Doe Python Tutorial`, then save it (the zoomed in version with the bottom right point cut out and red plus signs overplotted) to a file. Keep a folder in your user directory for the class with your final efforts on this and all future python tutorials for us to check.
+Save your final plot (the zoomed in version with the bottom right point cut out and red plus signs overplotted) to a file. Keep a folder in your user directory with your final efforts on this and other tutorials.
