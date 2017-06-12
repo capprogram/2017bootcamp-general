@@ -1,4 +1,4 @@
-# Frequent Parameter Estimation by Maximum Likelihood Model Fitting 
+# Parameter Estimation by Maximum Likelihood Model Fitting 
 
 Most recent version by Sheila Kannappan June 2017, with major contributions from Kathleen Eckert, Rohan Isaac, and Amy Oldenberg.
 
