@@ -80,4 +80,4 @@ Note that in this example we have assumed that the &sigma; on all data points is
 <img src="https://latex.codecogs.com/png.latex?C=\begin{pmatrix}\sigma_a^2&cov(\alpha,\beta)\\cov(\alpha,\beta)&\sigma_\beta^2\end{pmatrix}"/> which is the inverse of the Hessian Matrix, consisting of second derivatives of the log likelihood with respect to different model parameters. (When these matrices get tricky to compute, we can resort to a more approximate numerical technique such as the bootstrap.)
 Add `cov="True"` to the `np.polyfit` function call so that `np.polyfit` will compute the covariance matrix numerically. Print out the uncertainties computed using the covariance matrix. Are they the same as found in the analytical solution? What happens to the uncertainties as you increase/decrease the number of data points? What happens to the _percentage difference_ between the analytical and numerical methods as you increase/decrease the number of data points?
 
-Solutions to the tutorial are in Download [paramfit1_soln.py](paramfit1_soln.py).
+Solutions to the tutorial are in [paramfit1_soln.py](paramfit1_soln.py).
