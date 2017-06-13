@@ -1,6 +1,10 @@
 # Setup python on department linux machines
 
-We will use a custom Anaconda installation of python as opposed to whatever python is already installed on the linux system. This will allow us to add packages and keep a consistent python experience across machines/operating systems. To get started, open a terminal on a UNC linux machine and type
+We will use a custom Anaconda installation of python as opposed to whatever python is already installed on the linux system. This will allow us to add packages and keep a consistent python experience across machines/operating systems. Before we get started, you must modify your ~/.mycshrc file after logging into any UNC linux machine (the ~/ indicates this is in your home directory, and the filename begins with a "."):
+
+    setenv QT_XKB_CONFIG_ROOT /usr/share/X11/xkb
+
+This environment variable will now be read anytime you log in or open a new terminal window. Next open a new terminal and type
 
     unc_anaconda
     
@@ -23,5 +27,3 @@ Note that the above steps are a one time setup. If you ever want to use the anac
 
     unc_anaconda
     source activate astro
-
-Potential bug: If when you move on to the tutorial using Anaconda's Spyder app, typing on your keyboard does not produce any input to Spyder, then run the following terminal command: `export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb` (see this [discussion](https://github.com/spyder-ide/spyder/issues/3713))
