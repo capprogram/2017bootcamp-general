@@ -10,7 +10,7 @@ This environment variable will now be read anytime you log in or open a new term
 
     unc_anaconda
     
-This will load you into a bash (differences with tcsh are negligible for general use) subshell with anaconda python as the default python. You should see your terminal prompt change to `(anaconda_bash)user@machine:~$` or similar. Once in this subshell you can make your own anaconda environment by typing
+This will load you into a bash subshell (differences with tcsh are negligible for general use) with anaconda python as the default python. You should see your terminal prompt change to `(anaconda_bash)user@machine:~$` or similar. Once in this subshell you can make your own anaconda environment by typing
 
     conda create --name astro scikit-learn matplotlib astropy pymc spyder pandas
 
