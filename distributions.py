@@ -105,9 +105,9 @@ if makenew:
     # since the random subsamples change each time we re-run, we can uncomment
     # the command below to save a favorite randomization, then set makenew=False
     # for subsequent runs
-    # np.savez('crossvalidationflag',flag12=flag12)
+    # np.savez('samplesplitflag',flag12=flag12)
 else:
-    input = np.load("crossvalidationflag.npz")
+    input = np.load("samplesplitflag.npz")
     flag12 = input['flag12']
     
 sample1inds = np.where(flag12 == 1)
