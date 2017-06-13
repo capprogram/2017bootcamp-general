@@ -10,3 +10,4 @@ To see how the &chi;<sup>2</sup> value can serve as a test, consider that if the
 
 (c) This exercise shows that just knowing that the reduced &chi;<sup>2</sup> ≈ 1 does not tell you how good your model is. You must know N. If you do, you can compute confidence levels by integrating the probability under the normalized &chi;<sup>2</sup> distribution up to your measured &chi;<sup>2</sup>. Use np.argsort to do this approximately with the &chi;<sup>2</sup> distributions from your Monte Carlo.
 
+If you get really stuck, consult [these solutions](https://github.com/galastrostats/general/blob/master/interpretingchi2.py.solns), but not 'til your puzzler is sore.
