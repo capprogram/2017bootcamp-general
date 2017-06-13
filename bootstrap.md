@@ -21,7 +21,7 @@ Bootstrapping can be unreliable for small samples. Let's explore how to obtain a
 
 ## Part III: Errors in Fitted Parameters
 
-Revisit your code from the [tutorial on parameter estimation by maximum likelihood fitting](https://github.com/capprogram/2017bootcamp-general/blob/master/frequentist_paramfitting_tutorial.md), in which we computed errors on the slope and intercept of a line fit using both a pure analytic solution and a numerical estimate based on the Hessian matrix. Augment the code to obtain bootstrap estimates of the slope and intercept uncertainties and compare these with the analytic and Hessian matrix results.
+Revisit your code from the [tutorial on parameter estimation by maximum likelihood fitting](https://github.com/capprogram/2017bootcamp-general/blob/master/frequentist_paramfitting_tutorial.md), in which we computed errors on the slope and intercept of a line fit using both a pure analytic solution and a numerical estimate based on the Hessian matrix. Augment the code to obtain bootstrap estimates of the slope and intercept uncertainties and compare these with your analytic and Hessian matrix results.
 
 
 Here are some solution codes for you to compare your work with:    
@@ -31,4 +31,3 @@ Here are some solution codes for you to compare your work with:
 
 [&sigma; comparisons for Part II](https://github.com/capprogram/2017bootcamp-general/blob/master/sigmatests.py)    
 
-[bootstrapped line fitting code](https://github.com/capprogram/2017bootcamp-general/blob/master/paramfit1_boot.py)
