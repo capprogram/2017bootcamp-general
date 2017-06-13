@@ -23,3 +23,5 @@ Note that the above steps are a one time setup. If you ever want to use the anac
 
     unc_anaconda
     source activate astro
+
+Potential bug: If when you move on to the tutorial using Anaconda's Spyder app, typing on your keyboard does not produce any input to Spyder, then run the following terminal command: `export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb` (see this [discussion](https://github.com/spyder-ide/spyder/issues/3713))
