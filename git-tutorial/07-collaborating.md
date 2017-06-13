@@ -38,7 +38,7 @@ Now both the Collaborator and the Owner have a local copy of the master branch o
 5. Select Protect this branch, and click Save changes.
 
 ## Make changes to a branch
-Make a branch of your (Wolfman's) local master and switch to it
+Make a branch of the Collaborator's (Wolfman's) local master and switch to it
 
 ```
 git branch wolfman-pluto
