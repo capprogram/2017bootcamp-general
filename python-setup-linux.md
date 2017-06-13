@@ -1,6 +1,8 @@
 # Setup python on department linux machines
 
-We will use a custom Anaconda installation of python as opposed to whatever python is already installed on the linux system. This will allow us to add packages and keep a consistent python experience across machines/operating systems. Before we get started, you must modify your ~/.mycshrc file after logging into any UNC linux machine (the ~/ indicates this file is in your home directory, and please notice the filename begins with a "."):
+We will use a custom Anaconda installation of python as opposed to whatever python is already installed on the linux system. This will allow us to add packages and keep a consistent python experience across machines/operating systems. 
+
+Before we get started, you must modify your ~/.mycshrc file after logging into any UNC linux machine (the ~/ indicates this file is in your home directory, and please notice the filename begins with a "." so you can't see it with "ls", although you can with "ls .*"):
 
     setenv QT_XKB_CONFIG_ROOT /usr/share/X11/xkb
 
