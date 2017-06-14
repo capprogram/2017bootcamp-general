@@ -27,5 +27,5 @@ Revisit your code from the [tutorial on parameter estimation by maximum likeliho
 Here are some codes for you to compare your work with:    
 [modified code for Fig. 3.24](https://github.com/capprogram/2017bootcamp-general/blob/master/fig3.24.mod.py)    
 [smoothed bootstrap utility code](https://github.com/capprogram/2017bootcamp-general/blob/master/smoothedbootstrap.py)    
-[&sigma; comparisons for Part II](https://github.com/capprogram/2017bootcamp-general/blob/master/sigmatests.py)    
-
+[&sigma; comparison code](https://github.com/capprogram/2017bootcamp-general/blob/master/sigmatests.py)    
+[bootstrapped line fitting code](https://github.com/capprogram/2017bootcamp-general/blob/master/paramfit1_boot.py)    
