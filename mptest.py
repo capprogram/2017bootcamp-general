@@ -12,9 +12,9 @@ def funSquare(num):
     return num ** 2
 
 if __name__ == '__main__':
-    nums=range(10000000)     
+    nums=range(30000)     
     poola = multiprocessing.Pool(1) #initializes N workers, where N = # of CPU cores
-    poolb = multiprocessing.Pool(10) #initializes N workers, where N = # of CPU cores
+    poolb = multiprocessing.Pool(3) #initializes N workers, where N = # of CPU cores
     tic1 = time.clock()
     results1 = poola.map(funSquare, nums)
     toc1 = time.clock()
@@ -24,5 +24,5 @@ if __name__ == '__main__':
     tic3 = time.clock()
     resultsseq = map(funSquare, nums)
     toc3 = time.clock()
-    print('Parallel processing time (1, 10 proc): %r %r\nSerial processing time: %r'
+    print('Parallel processing time (1, 3 proc): %r %r\nSerial processing time: %r'
           % (toc1 - tic1, toc2 - tic2, toc3 - tic3))
