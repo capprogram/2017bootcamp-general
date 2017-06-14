@@ -1,7 +1,7 @@
 # Bootstrapping Tutorial
 by Sheila Kannappan and Rohan Isaac
 
-Bootstrapping can be used to estimate uncertainties in any kind of statistic by recalculating it repeatedly with the input data set resampled each time (with replacement, so [2, 7, 8, 4, 11] could become [7, 11, 11, 4, 2]). In this activity we will see bootstrapping used to measure (i) the uncertainty in a correlation test result, (ii) the uncertainty in the standard deviation of a data set, and (iii) the uncertainty in a fitted parameter.
+Bootstrapping can be used to estimate uncertainties in any kind of statistic by recalculating it repeatedly with the input data set resampled each time (with replacement, so [2, 7, 8, 4, 11] could become [7, 11, 11, 4, 2]). In what follows we will see bootstrapping used to measure (i) the uncertainty in a correlation test result, (ii) the uncertainty in the standard deviation of a data set, and (iii) the uncertainty in a fitted parameter. Consult Section 4.5 of the Ivezic et al. textbook for further discussion on both the bootstrap and the jackknife, a less common alternative.
 
 ## Part I: Method Analysis
 
@@ -17,7 +17,9 @@ Bootstrapping can be unreliable for small samples. Let's explore how to obtain a
 
 1. Construct an initial random sample of 5 points drawn from a Gaussian with mean = 0 and &sigma; = 1. Compare the directly computed &sigma; for this sample from `np.std` to the input ("true") &sigma; as well as to the &sigma; found using `astroML.resample.bootstrap` with `np.std`. (GOTCHA: Read the documentation for `np.std` to set the parameter ddof properly -- the default value is not the preferred one. You also may need to specify an axis for np.std, because np.std flattens arrays by default.) Bootstrapping outputs an entire distribution of values (one for each bootstrap iteration) so you can think of the median value as the &sigma; estimate and the 16th and 84th percentiles as bounding the 68% confidence interval. Perform 1000 runs with 5 different starting data points each time, and perform 2000 bootstrap resamples of the 5 data points within each run. Plot histograms to look at how the 2000 bootstrapped values from np.std vary within a run and how the median values vary over all 1000 runs.
 
-2. Using the discussion in section 2 of [Hesterberg (2004)](https://github.com/galastrostats/general/blob/master/JSM04-bootknife.pdf) and modeling your code on `astroML.resample.bootstrap`, construct a utility code called `smoothedbootstrap`. Test your smoothedbootstrap code on the sample from question 1 to determine whether it performs better than the ordinary bootstrap at recovering &sigma;. Plot the distributions and ratios of the various &sigma; estimates to compare them. If the residual bias in the smoothed bootstrap (and in the usual standard deviation) bothers you, visit [this page](https://en.wikipedia.org/wiki/Unbiased_estimation_of_standard_deviation).
+2. Using the discussion in section 2 of [Hesterberg (2004)](https://github.com/galastrostats/general/blob/master/JSM04-bootknife.pdf) and modeling your code on `astroML.resample.bootstrap`, construct a utility code called `smoothedbootstrap`. Test your smoothedbootstrap code on the sample from question 1 to determine whether it performs better than the ordinary bootstrap at recovering &sigma;. Plot the distributions and ratios of the various &sigma; estimates to compare them. If the residual bias in the smoothed bootstrap (and in the usual standard deviation) bothers you, visit [this page](https://en.wikipedia.org/wiki/Unbiased_estimation_of_standard_deviation).    
+
+Note that Hesterberg introduces a hybrid of the bootstrap and the jackknife called the "bootknife" as well.
 
 ## Part III: Errors in Fitted Parameters
 
