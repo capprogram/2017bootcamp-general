@@ -16,6 +16,9 @@ def newdatafullbootstrap(runindex):
     # NOTE: all print and plot outputs removed, apparently blocked by
     # multiprocessing anyway
     
+    # Generate a fresh seed
+    npr.seed()
+    
     # Generating fake data set to start with:
     alphatrue=2. # slope
     betatrue=5.  # intercept
@@ -49,7 +52,7 @@ def newdatafullbootstrap(runindex):
     # BOOTSTRAP!
     
     npars = 2 # slope and intercept
-    nboot = 10000 # usually want at least 1000
+    nboot = 1000 # usually want at least 1000
     rng = check_random_state(None)
     ind = rng.randint(narr, size=(narr,nboot))
     bootresults = np.zeros((npars,nboot))
@@ -71,22 +74,33 @@ def newdatafullbootstrap(runindex):
     slope_err_ratio2 = 0.5*(np.sum(slope68pcterrs))/alphaunc
     int_err_ratio2 = 0.5*(np.sum(int68pcterrs))/betaunc
     
-    return runindex, slope_err_ratio, int_err_ratio
+    return runindex, slope_err_ratio, int_err_ratio, slope_err_ratio2, int_err_ratio2
 
 if __name__ == '__main__':
+    pool = mp.Pool(processes=7)
     init_time = time.clock()  # start clock
-    pool = mp.Pool(4)
     results = pool.map(newdatafullbootstrap, range(50))
-    tupletypes = np.dtype('int, float, float')
+    elapsed_time1 = time.clock() - init_time
+    init_time = time.clock()  # start clock
+    results2=[]
+    for ij in range(50):
+        resultsij = newdatafullbootstrap(ij)
+        results2.append(resultsij)
+    elapsed_time2 = time.clock() - init_time
+    print "elapsed time parallel (ms) %0.3f" % (1000.*elapsed_time1)
+    print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time2)
+    tupletypes = np.dtype('int, float, float, float, float')
     mixedarray = np.array(results, dtype=tupletypes)
     runindex = mixedarray['f0']
     slope_err_ratio = mixedarray['f1']
     int_err_ratio = mixedarray['f2']
+    slope_err_ratio2 = mixedarray['f3']
+    int_err_ratio2 = mixedarray['f4']
+'''
     # Plot ratios
     plt.figure(2) 
     plt.clf()
     plt.plot(slope_err_ratio,int_err_ratio,'b*',markersize=10)
     plt.xlabel("slope error ratio")
     plt.ylabel("intercept error ratio")
-    elapsed_time = time.clock() - init_time
-    print "elapsed time (ms) %0.3f" % (1000.*elapsed_time)
+'''
