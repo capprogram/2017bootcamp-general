@@ -83,11 +83,18 @@ slopesort = np.argsort(sloperesults)
 slopemed = np.median(sloperesults)
 pct16 = int(round(0.16*nboot))
 pct84 = int(round(0.84*nboot))
-slope68percentconf = [slopemed-sloperesults[slopesort[pct16]],sloperesults[slopesort[pct84]]-slopemed]
+slope68pcterrs = [slopemed-sloperesults[slopesort[pct16]],sloperesults[slopesort[pct84]]-slopemed]
 intsort = np.argsort(intresults)
 intmed = np.median(intresults)
-int68percentconf = [intmed-intresults[intsort[pct16]],intresults[intsort[pct84]]-intmed]
+int68pcterrs = [intmed-intresults[intsort[pct16]],intresults[intsort[pct84]]-intmed]
 
 print("               ") # put in some whitespace to make easier to read
-print("bootstrap slope is %0.7f + %0.7f - %0.7f" % (slopemed,slope68percentconf[0],slope68percentconf[1]))
-print("bootstrap intercept is %0.7f + %0.7f - %0.7f" % (intmed,int68percentconf[0],int68percentconf[1]))
+print("bootstrap slope is %0.7f + %0.7f - %0.7f" % (slopemed,slope68pcterrs[0],slope68pcterrs[1]))
+print("bootstrap intercept is %0.7f + %0.7f - %0.7f" % (intmed,int68pcterrs[0],int68pcterrs[1]))
+print("slope error ratio: %0.5f" % (0.5*(np.sum(slope68pcterrs))/np.sqrt(covp[0,0])))
+print("int error ratio: %0.5f" % (0.5*(np.sum(int68pcterrs))/np.sqrt(covp[1,1])))
+
+# running this code repeatedly to generate different data sets reveals that the
+# bootstrap uncertainties are less reliable than the analytic and Hessian-
+# derived uncertainties, but still perform surprisingly well, even with only
+# 50 data points to resample
