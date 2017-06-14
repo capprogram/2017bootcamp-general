@@ -15,7 +15,6 @@ import time
 def newdatafullbootstrap(runindex):
     # NOTE: all print and plot outputs removed, apparently blocked by
     # multiprocessing anyway
-    print "hi"
     
     # Generate a fresh seed
     npr.seed()
@@ -78,16 +77,25 @@ def newdatafullbootstrap(runindex):
     return runindex, slope_err_ratio, int_err_ratio, slope_err_ratio2, int_err_ratio2
 
 if __name__ == '__main__':
-    pool = mp.Pool(processes=3)
     init_time = time.clock()  # start clock
-    results1 = pool.map(newdatafullbootstrap, range(300))
+    pool = mp.Pool(processes=3)
+    setup_time = time.clock() - init_time
+    init_time = time.clock()  # start clock
+    results1 = pool.map(newdatafullbootstrap, range(30))
     elapsed_time1 = time.clock() - init_time
-    #init_time = time.clock()  # start clock
-    #results2 = map(newdatafullbootstrap, range(300))
-    #elapsed_time2 = time.clock() - init_time
+    init_time = time.clock()  # start clock
+    results2 = map(newdatafullbootstrap, range(30))
+    elapsed_time2 = time.clock() - init_time
+    init_time = time.clock()  # start clock
+    results2=[]
+    for ij in range(30):
+        resultsij = newdatafullbootstrap(ij)
+        results2.append(resultsij)
+    elapsed_time3 = time.clock() - init_time
+    print "pool setup time (ms) %0.3f" % (1000.*setup_time)
     print "elapsed time mp map (ms) %0.3f" % (1000.*elapsed_time1)
-    #print "elapsed time map (ms) %0.3f" % (1000.*elapsed_time2)
-#    print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time3)
+    print "elapsed time map (ms) %0.3f" % (1000.*elapsed_time2)
+    print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time3)
     tupletypes = np.dtype('int, float, float, float, float')
     mixedarray = np.array(results1, dtype=tupletypes)
     runindex = mixedarray['f0']
@@ -102,12 +110,4 @@ if __name__ == '__main__':
     plt.plot(slope_err_ratio,int_err_ratio,'b*',markersize=10)
     plt.xlabel("slope error ratio")
     plt.ylabel("intercept error ratio")
-'''
-'''
-    init_time = time.clock()  # start clock
-    results2=[]
-    for ij in range(300):
-        resultsij = newdatafullbootstrap(ij)
-        results2.append(resultsij)
-    elapsed_time3 = time.clock() - init_time
 '''
