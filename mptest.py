@@ -7,6 +7,7 @@ Created on Wed Jun 14 16:12:35 2017
 
 import multiprocessing
 import time
+import numpy as np
 
 def funSquare(num):
     return num ** 2
@@ -24,5 +25,8 @@ if __name__ == '__main__':
     tic3 = time.clock()
     resultsseq = map(funSquare, nums)
     toc3 = time.clock()
-    print('Parallel processing time (1, 3 proc): %r %r\nSerial processing time: %r'
-          % (toc1 - tic1, toc2 - tic2, toc3 - tic3))
+    tic4 = time.clock()
+    resultsman = funSquare(np.array(nums))
+    toc4 = time.clock()
+    print('Parallel processing time (1, 3 proc): %r %r\nSerial processing time (map, manual): %r %r'
+          % (toc1 - tic1, toc2 - tic2, toc3 - tic3, toc4 - tic4))
