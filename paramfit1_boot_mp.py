@@ -13,8 +13,8 @@ import multiprocessing as mp
 import time
 
 def newdatafullbootstrap(runindex):
-    # NOTE: all print and plot outputs removed, apparently blocked by
-    # multiprocessing anyway
+    # NOTE: all print and plot commands removed, would be blocked by
+    # multiprocessing wrapper anyway
     
     # Generate a fresh seed
     npr.seed()
@@ -41,7 +41,8 @@ def newdatafullbootstrap(runindex):
     
     # Solution using python solver np.polyfit
     # third parameter is order of fit, 1 for linear
-    pfit = np.polyfit(xvals, yvals, 1) # returns coeff. of highest order term first
+# line below duplicated later
+#    pfit = np.polyfit(xvals, yvals, 1) # returns coeff. of highest order term first
     
     # Can also obtain parameter uncertainties from the diagonal terms of the covariance
     # matrix, which is the inverse of the Hessian matrix and
@@ -77,18 +78,19 @@ def newdatafullbootstrap(runindex):
     return runindex, slope_err_ratio, int_err_ratio, slope_err_ratio2, int_err_ratio2
 
 if __name__ == '__main__':
+    nruns = 300
     init_time = time.clock()  # start clock
     pool = mp.Pool(processes=3)
     setup_time = time.clock() - init_time
     init_time = time.clock()  # start clock
-    results1 = pool.map(newdatafullbootstrap, range(30))
+    results1 = pool.map(newdatafullbootstrap, range(nruns))
     elapsed_time1 = time.clock() - init_time
     init_time = time.clock()  # start clock
-    results2 = map(newdatafullbootstrap, range(30))
+    results2 = map(newdatafullbootstrap, range(nruns))
     elapsed_time2 = time.clock() - init_time
     init_time = time.clock()  # start clock
     results2=[]
-    for ij in range(30):
+    for ij in xrange(nruns):
         resultsij = newdatafullbootstrap(ij)
         results2.append(resultsij)
     elapsed_time3 = time.clock() - init_time
@@ -96,6 +98,7 @@ if __name__ == '__main__':
     print "elapsed time mp map (ms) %0.3f" % (1000.*elapsed_time1)
     print "elapsed time map (ms) %0.3f" % (1000.*elapsed_time2)
     print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time3)
+'''
     tupletypes = np.dtype('int, float, float, float, float')
     mixedarray = np.array(results1, dtype=tupletypes)
     runindex = mixedarray['f0']
@@ -103,7 +106,6 @@ if __name__ == '__main__':
     int_err_ratio = mixedarray['f2']
     slope_err_ratio2 = mixedarray['f3']
     int_err_ratio2 = mixedarray['f4']
-'''
     # Plot ratios
     plt.figure(2) 
     plt.clf()
