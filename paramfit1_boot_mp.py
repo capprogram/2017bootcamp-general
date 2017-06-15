@@ -109,7 +109,7 @@ if __name__ == '__main__':
     plt.figure(2) 
     plt.clf()
     plt.plot(slope_err_ratio,int_err_ratio,'b*',markersize=10)
-    plt.plot(slope_err_ratio2,int_err_ratio2,'r.',markersize=20)
+    plt.plot(slope_err_ratio2,int_err_ratio2,'r.',markersize=10)
     plt.xlabel("slope error ratio")
     plt.ylabel("intercept error ratio")
 
