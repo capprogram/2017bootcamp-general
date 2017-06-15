@@ -85,20 +85,19 @@ if __name__ == '__main__':
     init_time = time.clock()  # start clock
     results1 = pool.map(newdatafullbootstrap, range(nruns))
     elapsed_time1 = time.clock() - init_time
-    init_time = time.clock()  # start clock
-    results2 = map(newdatafullbootstrap, range(nruns))
-    elapsed_time2 = time.clock() - init_time
-    init_time = time.clock()  # start clock
-    results2=[]
-    for ij in xrange(nruns):
-        resultsij = newdatafullbootstrap(ij)
-        results2.append(resultsij)
-    elapsed_time3 = time.clock() - init_time
+#    init_time = time.clock()  # start clock
+#    results2 = map(newdatafullbootstrap, range(nruns))
+#    elapsed_time2 = time.clock() - init_time
+#    init_time = time.clock()  # start clock
+#    results2=[]
+#    for ij in xrange(nruns):
+#        resultsij = newdatafullbootstrap(ij)
+#        results2.append(resultsij)
+#    elapsed_time3 = time.clock() - init_time
     print "pool setup time (ms) %0.3f" % (1000.*setup_time)
     print "elapsed time mp map (ms) %0.3f" % (1000.*elapsed_time1)
-    print "elapsed time map (ms) %0.3f" % (1000.*elapsed_time2)
-    print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time3)
-'''
+#    print "elapsed time map (ms) %0.3f" % (1000.*elapsed_time2)
+#    print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time3)
     tupletypes = np.dtype('int, float, float, float, float')
     mixedarray = np.array(results1, dtype=tupletypes)
     runindex = mixedarray['f0']
@@ -110,6 +109,7 @@ if __name__ == '__main__':
     plt.figure(2) 
     plt.clf()
     plt.plot(slope_err_ratio,int_err_ratio,'b*',markersize=10)
+    plt.plot(slope_err_ratio2,int_err_ratio2,'r.',markersize=20)
     plt.xlabel("slope error ratio")
     plt.ylabel("intercept error ratio")
-'''
+
