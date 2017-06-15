@@ -10,6 +10,9 @@ This starts ipython with some common libraries autoloaded, including:
 import numpy as np		# basic numerical analysis
 import matplotlib.pyplot as plt	# plotting
 ```
+
+The `--pylab` flag should set things up so that plots will just automatically open when you make them, but if that doesn't happen, try adding `pylab.ion()` and `plt.show()` to your codes.
+
 This is conveninent if you need to do some interactive work in a terminal, but it does remove some of the interactive features of spyder. You can recover some of the functionality using the following functions
 
 ```python
