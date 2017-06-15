@@ -9,12 +9,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import numpy.random as npr
 from astroML.utils import check_random_state
-import multiprocessing as mp
+#import multiprocessing as mp
 import time
+import joblib as jl
 
 def newdatafullbootstrap(runindex):
     # NOTE: all print and plot commands removed, would be blocked by
     # multiprocessing wrapper anyway
+    nproc = 3
     
     # Generate a fresh seed
     npr.seed()
@@ -56,11 +58,19 @@ def newdatafullbootstrap(runindex):
     nboot = 1000 # usually want at least 1000
     rng = check_random_state(None)
     ind = rng.randint(narr, size=(narr,nboot))
+    starttime = time.clock()
     bootresults = np.zeros((npars,nboot))
     for iboot in xrange(nboot):
         bootresults[:,iboot] = np.polyfit(xvals[ind[:,iboot]], yvals[ind[:,iboot]], 1)
     sloperesults = bootresults[0,:]
     intresults = bootresults[1,:]
+    endtime = time.clock()
+    print "conventional loop time %0.3f" % (1000.*(endtime - starttime))
+    starttime = time.clock()
+    bootres = jl.Parallel(n_jobs = nproc)(jl.delayed(np.polyfit)(xvals[ind[:,iboot]], yvals[ind[:,iboot]], 1) for iboot in xrange(nboot))
+    sloperesults,intresults = zip(*bootres)
+    endtime = time.clock()
+    print "parallelized loop time %0.3f" % (1000.*(endtime - starttime))
     slopesort = np.argsort(sloperesults)
     slopemed = np.median(sloperesults)
     pct16 = int(round(0.16*nboot))
@@ -78,12 +88,12 @@ def newdatafullbootstrap(runindex):
     return runindex, slope_err_ratio, int_err_ratio, slope_err_ratio2, int_err_ratio2
 
 def main(nruns, nproc):
-    init_time = time.clock()  # start clock
-    pool = mp.Pool(processes=nproc)
-    setup_time = time.clock() - init_time
-    init_time = time.clock()  # start clock
-    results1 = pool.map(newdatafullbootstrap, range(nruns))
-    elapsed_time1 = time.clock() - init_time
+    #init_time = time.clock()  # start clock
+    #pool = mp.Pool(processes=nproc)
+    #setup_time = time.clock() - init_time
+    #init_time = time.clock()  # start clock
+    #results1 = pool.map(newdatafullbootstrap, range(nruns))
+    #elapsed_time1 = time.clock() - init_time
     init_time = time.clock()  # start clock
     results2 = map(newdatafullbootstrap, range(nruns))
     elapsed_time2 = time.clock() - init_time
@@ -93,12 +103,12 @@ def main(nruns, nproc):
 #        resultsij = newdatafullbootstrap(ij)
 #        results3.append(resultsij)
 #    elapsed_time3 = time.clock() - init_time
-    print "pool setup time (ms) %0.3f" % (1000.*setup_time)
-    print "elapsed time mp map (ms) %0.3f" % (1000.*elapsed_time1)
+    #print "pool setup time (ms) %0.3f" % (1000.*setup_time)
+    #print "elapsed time mp map (ms) %0.3f" % (1000.*elapsed_time1)
     print "elapsed time map (ms) %0.3f" % (1000.*elapsed_time2)
 #    print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time3)
     tupletypes = np.dtype('int, float, float, float, float')
-    mixedarray = np.array(results1, dtype=tupletypes)
+    mixedarray = np.array(results2, dtype=tupletypes)
     runindex = mixedarray['f0']
     slope_err_ratio = mixedarray['f1']
     int_err_ratio = mixedarray['f2']
