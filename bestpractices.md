@@ -45,4 +45,4 @@ print "Time elapsed is %0.3f ms" % (elap_time*1000)  # converts to ms
 
 or in ipython try using the [`%time`](https://ipython.org/ipython-doc/3/interactive/magics.html#magic-time) and [`%timeit`](https://ipython.org/ipython-doc/3/interactive/magics.html#magic-timeit) magics
 
-__Note that for complicated code, %timeit is more reliable than time.clock(). You should use a protected version of the code if you want to run %timeit on the ipython command line (for example, you can type `import templatecodeprotected` then `%timeit templatecodeprotected.main()').__
+__Note that for complicated code, %timeit is more reliable than time.clock(). You should use a protected version of the code if you want to run %timeit on the ipython command line (for example, you can type `import templatecodeprotected` then `%timeit templatecodeprotected.main()`).__
