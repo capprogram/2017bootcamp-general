@@ -18,6 +18,6 @@ Finally, add a selection bias on x, such that x cannot be detected below 3. Repe
 
 ## Best Predictions
 
-All of the above assumed that the goal was to measure the true, underlying relationship between x and y.  What if your goal were instead to find the best predictive relation between the two, for example to predict y with greatest accuracy for a given x. How would the optimal choice of fit type change in this case? Hint: the best prediction fit y(x) would give the value of y at a given x about which we can expect symmetric scatter.
+All of the above assumed that the goal was to measure the true, underlying relationship between x and y.  What if your goal were instead to find the best predictive relation between the two, for example to predict y with greatest accuracy for a given x. How would the optimal choice of fit type change in this case? Hint: the best prediction fit y(x) would give the value of y at a given x about which we can expect symmetric scatter. In fact we may wish to trim the data at either end in x so that we fit only within a range of x in which y appears to show symmetric scatter.
 
 Sample answers are [here](https://github.com/capprogram/2017bootcamp-general/blob/master/fittingchoices.py).
