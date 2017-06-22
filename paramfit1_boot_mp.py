@@ -13,10 +13,12 @@ import multiprocessing as mp
 import time
 
 def newdatafullbootstrap(runindex):
-    # NOTE: all print and plot commands removed, would be blocked by
-    # multiprocessing wrapper anyway
+    # put original code inside "newdatafullbootstrap" function
+    # runindex isn't important, just a way to label the different code runs
+    # NOTE: all print and plot commands removed from original, would be 
+    # blocked by multiprocessing wrapper anyway
     
-    # Generate a fresh seed
+    # Get a fresh seed
     npr.seed()
     
     # Generating fake data set to start with:
@@ -41,7 +43,7 @@ def newdatafullbootstrap(runindex):
     
     # Solution using python solver np.polyfit
     # third parameter is order of fit, 1 for linear
-# duplicate np.polyfit command below can be commented out now
+# comment out duplicate np.polyfit command below
 #    pfit = np.polyfit(xvals, yvals, 1) # returns coeff. of highest order term first
     
     # Can also obtain parameter uncertainties from the diagonal terms of the covariance
@@ -70,44 +72,61 @@ def newdatafullbootstrap(runindex):
     intmed = np.median(intresults)
     int68pcterrs = [intmed-intresults[intsort[pct16]],intresults[intsort[pct84]]-intmed]
     
+    # compute and return ratios of bootstrap error to fitted 
+    # (Hessian-derived) and analytically computed errors
     slope_err_ratio = 0.5*(np.sum(slope68pcterrs))/np.sqrt(covp[0,0])
     int_err_ratio = 0.5*(np.sum(int68pcterrs))/np.sqrt(covp[1,1])
     slope_err_ratio2 = 0.5*(np.sum(slope68pcterrs))/alphaunc
     int_err_ratio2 = 0.5*(np.sum(int68pcterrs))/betaunc
-    
     return runindex, slope_err_ratio, int_err_ratio, slope_err_ratio2, int_err_ratio2
 
-def main(nruns, nproc):
-    init_time = time.clock()  # start clock
-    pool = mp.Pool(processes=nproc)
-    setup_time = time.clock() - init_time
-    init_time = time.clock()  # start clock
-    results1 = pool.map(newdatafullbootstrap, range(nruns))
-    elapsed_time1 = time.clock() - init_time
-    init_time = time.clock()  # start clock
-    results2 = map(newdatafullbootstrap, range(nruns))
-    elapsed_time2 = time.clock() - init_time
-#    init_time = time.clock()  # start clock
-#    results3=[]
-#    for ij in xrange(nruns):
-#        resultsij = newdatafullbootstrap(ij)
-#        results3.append(resultsij)
-#    elapsed_time3 = time.clock() - init_time
-    print "pool setup time (ms) %0.3f" % (1000.*setup_time)
-    print "elapsed time mp map (ms) %0.3f" % (1000.*elapsed_time1)
-    print "elapsed time map (ms) %0.3f" % (1000.*elapsed_time2)
-#    print "elapsed time serial (ms) %0.3f" % (1000.*elapsed_time3)
+def main(nruns, nproc, parallel_or_serial):
+    if ((parallel_or_serial == "p") | (parallel_or_serial == "both")):
+        init_time = time.clock()  # start clock
+        pool = mp.Pool(processes=nproc)
+        setup_time = time.clock() - init_time
+        init_time = time.clock()  # start clock
+        results1 = pool.map(newdatafullbootstrap, range(nruns))
+        elapsed_time1 = time.clock() - init_time
+    if ((parallel_or_serial == "s") | (parallel_or_serial == "both")):
+        init_time = time.clock()  # start clock
+        results2 = map(newdatafullbootstrap, range(nruns))
+        elapsed_time2 = time.clock() - init_time
+#    uncomment lines below incl. print statement to compare serial map to loop
+#    if ((parallel_or_serial == "s") | (parallel_or_serial == "both")):
+#        init_time = time.clock()  # start clock
+#        results3=[]
+#        for ij in xrange(nruns):
+#            resultsij = newdatafullbootstrap(ij)
+#            results3.append(resultsij)
+#        elapsed_time3 = time.clock() - init_time
+    print "number of data generation runs %r" % (nruns)
+    if ((parallel_or_serial == "p") | (parallel_or_serial == "both")):
+        print "number of processors for multiprocessing %r" % (nproc)
+        print "pool setup time (ms) %0.3f" % (1000.*setup_time)
+        print "elapsed time mp map (ms) %0.3f" % (1000.*elapsed_time1)
+    if ((parallel_or_serial == "s") | (parallel_or_serial == "both")):
+        print "elapsed time serial map (ms) %0.3f" % (1000.*elapsed_time2)
+#        print "elapsed time serial loop (ms) %0.3f" % (1000.*elapsed_time3)
     tupletypes = np.dtype('int, float, float, float, float')
-    mixedarray = np.array(results1, dtype=tupletypes)
+    if ((parallel_or_serial == "p") | (parallel_or_serial == "both")):
+        mixedarray = np.array(results1, dtype=tupletypes)
+    else:
+        mixedarray = np.array(results2, dtype=tupletypes)
     runindex = mixedarray['f0']
     slope_err_ratio = mixedarray['f1']
     int_err_ratio = mixedarray['f2']
     slope_err_ratio2 = mixedarray['f3']
     int_err_ratio2 = mixedarray['f4']
     # Plot ratios
-    plt.figure(2) 
+    plt.figure(1) 
     plt.clf()
-    plt.plot(slope_err_ratio,int_err_ratio,'b*',markersize=10)
-    plt.plot(slope_err_ratio2,int_err_ratio2,'r.',markersize=10)
+    plt.plot(slope_err_ratio,int_err_ratio,'b*',markersize=10,label="ratio of bootstrap:fit error")
+    plt.plot(slope_err_ratio2,int_err_ratio2,'r.',markersize=10,label="ratio of bootstrap:analytic error")
+    plt.legend(loc="best")
     plt.xlabel("slope error ratio")
     plt.ylabel("intercept error ratio")
+
+if __name__ == '__main__':
+    main(30,3,"both") # if called standalone run with default nruns=30, nproc=3,
+                      # parallel_or_serial = "both" (vs. "p" or "s")
