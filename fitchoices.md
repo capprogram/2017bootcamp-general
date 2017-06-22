@@ -18,7 +18,7 @@ Finally, add a selection bias on x, such that x cannot be detected below 3. Repe
 
 ## B. Best Predictions
 
-All of the above assumed that the goal was to measure the true, underlying relationship between x and y.  What if your goal were instead to find the best predictive relation between the two, for example to predict y with greatest accuracy for a given x. How would the optimal choice of fit type change in this case? Hint: the best prediction fit y(x) would give the value of y at a given x about which we can expect symmetric scatter. Make a plot showing this fit with the final data set from part A (with selection bias etc.). Is the scatter symmetric around the fit at a given x?
+All of the above assumed that the goal was to measure the true, underlying relationship between x and y.  What if your goal were instead to find the best predictive relation between the two, for example to predict y with greatest accuracy for a given x. How would the optimal choice of fit type change in this case? Hint: the best prediction fit y(x) would give the value of y at a given x about which we can expect symmetric scatter. Make a plot showing this fit with the final data set from part A (with selection bias etc.). Is the scatter symmetric around your fit at a given x?
 
 To improve the symmetry of the scatter, we may wish to trim the data in x so that we fit only within a range of x where y shows symmetric scatter. Perform such a trimmed fit and compare with your previous results. Notice that the "best prediction" fit does not look like the underlying true relation -- why is this reasonable?
 
