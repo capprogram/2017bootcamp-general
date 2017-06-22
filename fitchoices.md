@@ -4,7 +4,7 @@ Up to now, we have considered only the simple case of linear fits to y vs. x whe
 
 ## A. Best Fits
 
-We'll start with the situation where we are trying to determine the underlying physical relationship between x and y: the "best fit" or MLE fit. Correctly determining the MLE fit in the presence of complex errors and biases requires modifying the Likelihood function used in the fitting to reflect the exact details of the situation (e.g. as in 4.2.7 or [Hogg, Bovy, \& Lang (2010)](http://lanl.arxiv.org/abs/1008.4686)). However, inverse and bisector fits as described below can offer a "quick and dirty" impression of how much the fit might plausibly change given different assumptions and thus tell you whether doing things correctly is worth the trouble.
+We'll start with the situation where we are trying to determine the underlying physical relationship between x and y: the "best fit" or MLE fit. Correctly determining the MLE fit in the presence of complex errors and biases requires modifying the Likelihood function used in the fitting to reflect the exact details of the situation (e.g. as in 4.2.7 or [Hogg, Bovy, \& Lang 2010](http://lanl.arxiv.org/abs/1008.4686)). However, inverse and bisector fits as described below can offer a "quick and dirty" impression of how much the fit might plausibly change given different assumptions and thus tell you whether doing things correctly is worth the trouble.
 
 Using np.linspace, construct two 100-element “data sets” x and y such that x ranges from 1-10 and y ranges from 20-40.  Note that x and y should vary smoothly, with no randomness. If you plot y vs. x, you see the “true” relation with no measurement errors or biases.
 
