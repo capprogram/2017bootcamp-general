@@ -2,7 +2,7 @@
 
 Most recent version by Sheila Kannappan June 2017, with major contributions from Kathleen Eckert and Rohan Isaac.
 
-Note that in this tutorial when we refer to multiple models, we mean models with different parameter values within the same model class (e.g. straight lines). We will defer the topic of comparing whole _model families_ such as straight lines and second-order fits, but it follows naturally from the present discussion.
+Note that in this tutorial when we refer to multiple models, we mean models with different parameter values within the same model class (e.g. straight lines). For now we will not discuss the topic of comparing whole _model families_ such as straight lines and second-order fits, but it follows naturally from the present discussion.
 
 This tutorial is a sequel to [Parameter Estimation by Maximum Likelihood Fitting], which detailed the frequentist approach to fitting a line. In the frequentist approach we determined the *_likelihood of the data given the model_* P(D|M), meaning we considered one model and many data sets. The initial fake data set was imagined to be an example data set drawn from many possible experiments, which we could mathematically model under the assumption that the other experiments would provide data points distributed in Gaussian fashion around the measured data points (i.e., the standard sleight of hand of statistics, substituting the observed data distribution for "true" parent distribution). Thus it made sense to seek a single "best fit" model with maximum likelihood estimate (MLE) parameters.
 
