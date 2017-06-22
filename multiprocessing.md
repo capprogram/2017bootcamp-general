@@ -18,10 +18,12 @@ As explained in this [jupyter notebook](https://github.com/galastrostats/general
 ## Bootstrapping on Steroids    
 To illustrate what I've learned about multiprocessing, I've constructed a [wrapper code](https://github.com/capprogram/2017bootcamp-general/blob/master/paramfit1_boot_mp.py) for the [bootstrap line-fitting code](https://github.com/capprogram/2017bootcamp-general/blob/master/paramfit1_boot.py) from the [Bootstrapping Tutorial](https://github.com/capprogram/2017bootcamp-general/blob/master/bootstrap.md). The wrapper allows the user to re-run the bootstrapping code on more than one simulated data set. In other words, the code runs two nested Monte Carlos: one that generates simulated data sets, and one that performs bootstrap resampling on each individual simulated data set. Look at the code to see how the parallelization is implemented with the "multiprocessing" package in the "def main" code block. You can import the code as a module and then run it under `%timeit` to compare run times, like so:
 
+``` python
   import paramfit1_boot_mp
   %timeit paramfit1_boot_mp.main(40, 4, "both") # to generate 40 data sets, use 4 processors, and use both serial and parallel processing
   %timeit paramfit1_boot_mp.main(40, 4, "p") # to generate 40 data sets, use 4 processors, and use parallel processing
   %timeit paramfit1_boot_mp.main (40, 4, "s") # to generate 40 data sets and use serial processing (number of processors input is not used)
+```
 
 Notice that the run time printed by the code itself (computed with `time.clock()`) are not accurate when using multiprocessing.
 
