@@ -19,14 +19,14 @@ def runSimulation(params):
 
     return processedData
 
-def main():
+def main(nproc):
     # Define the parameters to test
     param1 = range(100)
     param2 = range(2, 202, 2)
 
     params = zip(param1, param2)
 
-    pool = multiprocessing.Pool(3)
+    pool = multiprocessing.Pool(nproc) # number of processes
 
     # Parallel map
     tic = time.clock()

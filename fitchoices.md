@@ -1,4 +1,5 @@
 # Realistic Line Fitting in the Frequentist Paradigm
+by Sheila Kannappan, updated June 2017
 
 Up to now, we have considered only the simple case of linear fits to y vs. x where all the error is in the y direction, the errors are known (and equal and Gaussian), there are no systematic errors, and the sample is unbiased. Fitting becomes immensely more complex when we relax these assumptions, as partially discussed in Sections 4.2.6-4.2.7 and Chapter 8 of the Ivezic et al. textbook. When there is scatter in both the x and y axes, there is also a decoupling between the "best fit" and the "best prediction" of y or x (given x or y). Here we will experiment with fake data to get a feel for these issues.
 
