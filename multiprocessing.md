@@ -5,6 +5,8 @@ These notes naturally follow the [Bootstrapping Tutorial](https://github.com/cap
 
 This is an _Un-Tutorial_ because the author is in no way an expert on multiprocessing and is simply sharing her own real-time learning process. We will consider only "embarrassingly parallel" applications, i.e., situations where an identical task is repeated many times so could be repeated in parallel rather than serial processing.
 
+You may want to use a server-class machine for this activity, but most desktops and laptops do have 2-4 cores these days.
+
 ## Cautionary notes
 
 1) Consider not pursuing this. You will earn much greater speed gains by vectorizing your code than by adding multiprocessing. The time you spend coding _plus_ the time your code spends running equals your total project time, so be sure the potential gains are worth it before spending a lot of time getting multiprocessing to work. Numerous details -- hardware, OS, and package or Python versions -- can affect the efficiency of multiprocessing, so you might have to do a lot of experimenting.     
