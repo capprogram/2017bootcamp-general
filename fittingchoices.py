@@ -42,12 +42,16 @@ def biweight(modelpts,datapts):
         np.abs(np.sum(((1-ui**2)*(1-5*ui**2))))
     return biwt
 
+npr.seed(111) # get the same plots every time by fixing the seed
+
 # set up data and plot underlying "true" relation
 ndata=100
 xx = np.linspace(1,10,ndata)
 yy = np.linspace(10,40,ndata)
+xlim = np.array([-6,17.])
 plt.figure(1,figsize=(10,10))
 plt.clf()
+plt.xlim(xlim)
 plt.plot(xx,yy,'r')
 
 # add random and systematic errors
@@ -60,6 +64,7 @@ yyscat = yy + npr.normal(0,sigma,ndata) + syserr
 # compute and plot forward and inverse fits
 plt.figure(2,figsize=(10,10))
 plt.clf()
+plt.xlim(xlim)
 pforward = np.polyfit(xx,yyscat,1)
 slopefor = pforward[0]
 intfor = pforward[1]
@@ -67,14 +72,14 @@ pinverse = np.polyfit(yyscat,xx,1)
 slopeinv = 1./pinverse[0]
 intinv = -1.*pinverse[1]/pinverse[0]
 plt.plot(xx,yyscat,'r.',label="data")
-plt.plot(xx,slopefor*xx+intfor,'b',label="forward")
-plt.plot(xx,slopeinv*xx+intinv,'g',label="inverse")
+plt.plot(xlim,slopefor*xlim+intfor,'b',label="forward")
+plt.plot(xlim,slopeinv*xlim+intinv,'g',label="inverse")
 plt.plot(xx,yy,color='black',ls=':',label="true")
 
 # compute and plot bisector fit
 slopebis = bisectorslope(slopefor,slopeinv)
 intbis = np.mean(yyscat) - slopebis*np.mean(xx)
-plt.plot(xx,slopebis*xx+intbis,'m--',label="bisector")
+plt.plot(xlim,slopebis*xlim+intbis,'m--',label="bisector")
 plt.legend(loc="best")
 
 # compare rms and biweight
@@ -96,6 +101,7 @@ xxscat = xx + npr.normal(0,sigmax,ndata)
 # compute and plot forward and inverse fits
 plt.figure(3,figsize=(10,10))
 plt.clf()
+plt.xlim(xlim)
 pforward = np.polyfit(xxscat,yyscat,1)
 slopefor = pforward[0]
 intfor = pforward[1]
@@ -103,14 +109,14 @@ pinverse = np.polyfit(yyscat,xxscat,1)
 slopeinv = 1./pinverse[0]
 intinv = -1.*pinverse[1]/pinverse[0]
 plt.plot(xxscat,yyscat,'r.',label="data")
-plt.plot(xxscat,slopefor*xxscat+intfor,'b',label="forward")
-plt.plot(xxscat,slopeinv*xxscat+intinv,'g',label="inverse")
+plt.plot(xlim,slopefor*xlim+intfor,'b',label="forward")
+plt.plot(xlim,slopeinv*xlim+intinv,'g',label="inverse")
 plt.plot(xx,yy,color='black',ls=':',label="true")
 
 # compute and plot bisector fit
 slopebis = bisectorslope(slopefor,slopeinv)
 intbis = np.mean(yyscat) - slopebis*np.mean(xxscat)
-plt.plot(xxscat,slopebis*xxscat+intbis,'m',label="bisector")
+plt.plot(xlim,slopebis*xlim+intbis,'m',label="bisector")
 plt.legend(loc="best")
 
 # compare rms and biweight
@@ -148,6 +154,7 @@ yycut = yyscat[np.where(xxscat > 3.)]
 # compute and plot forward and inverse fits
 plt.figure(4,figsize=(10,10))
 plt.clf()
+plt.xlim(xlim)
 pforward = np.polyfit(xxcut,yycut,1)
 slopefor = pforward[0]
 intfor = pforward[1]
@@ -155,14 +162,14 @@ pinverse = np.polyfit(yycut,xxcut,1)
 slopeinv = 1./pinverse[0]
 intinv = -1.*pinverse[1]/pinverse[0]
 plt.plot(xxcut,yycut,'r.',label="data")
-plt.plot(xxcut,slopefor*xxcut+intfor,'b',label="forward")
-plt.plot(xxcut,slopeinv*xxcut+intinv,'g',label="inverse")
+plt.plot(xlim,slopefor*xlim+intfor,'b',label="forward")
+plt.plot(xlim,slopeinv*xlim+intinv,'g',label="inverse")
 plt.plot(xx,yy,color='black',ls=':',label="true")
 
 # compute and plot bisector fit
 slopebis = bisectorslope(slopefor,slopeinv)
 intbis = np.mean(yycut) - slopebis*np.mean(xxcut)
-plt.plot(xxcut,slopebis*xxcut+intbis,'m',label="bisector")
+plt.plot(xlim,slopebis*xlim+intbis,'m',label="bisector")
 plt.legend(loc="best")
 
 # compare rms and biweight
@@ -184,4 +191,48 @@ print "bisector fit rms-x %f and biweight-x %f" % ((rms(slopebisx*yycut+intbisx,
 # The bisector fit is the least awful, but none of the fits is great. It would be
 # better to properly model both the errors and the selection bias.
 
-# If we had been trying to predict y, we would have to minimize residuals in the y-direction.
+# If we want to predict y, we want to find the middle of the scatter in y at
+# each given x, i.e., we want symmetric residuals around the predicted y at 
+# each x. This goal implies a forward fit, which minimizes residuals in the y-
+# direction. A first pass at this is shown here...
+
+plt.figure(5,figsize=(10,10))
+plt.clf()
+plt.xlim(xlim)
+pforward = np.polyfit(xxcut,yycut,1)
+slopefor = pforward[0]
+intfor = pforward[1]
+plt.plot(xxcut,yycut,'r.',label="data")
+plt.plot(xlim,slopefor*xlim+intfor,'b',label="forward")
+plt.plot(xx,yy,color='black',ls=':',label="true")
+plt.legend(loc="best")
+
+#... but it isn't optimal because asymmetric scatter (in other words,  
+# apparent deviations from linearity in the data) skews the fit. If we want
+# to stick with a linear prediction, we can improve the prediction over a
+# restricted range by trimming the data to exclude high/low values of x
+# where there is asymmetric scatter. The prediction is then invalid outside
+# the calibration range. Eyeballing it, trimming x>12 should work well for us.
+
+xtofit = xxcut[xxcut < 12]
+ytofit = yycut[xxcut < 12]
+pforwardtrim = np.polyfit(xtofit,ytofit,1)
+slopefortrim = pforwardtrim[0]
+intfortrim = pforwardtrim[1]
+plt.plot(xlim,slopefortrim*xlim+intfortrim,'g',label="trimmed forward")
+plt.plot([12,12],[0,100],color="black",linestyle='--')
+plt.legend(loc="best")
+
+# Picking any x, we can see that the trimmed forward fit bisects the scatter in
+# y better than the forward fit, as long as x<12. It is noticeable that although 
+# the trimmed forward fit gives the best *prediction* of y given x, it does not
+# resemble the true underlying y(x) relation. Our prediction aims to find the
+# most likely y measurement given a certain x measurement, so it folds in all
+# the errors and selection biases of real data *on purpose*, and the prediction
+# will only work in a situation with similar errors and biases. In contrast, the
+# true y(x) relation is a property of nature, obscured by errors and biases.
+# Incidentally, to be truly rigorous, we might want to replace our eyeballed 
+# trimming with trimming based on either physical knowledge or statistical 
+# optimization. In the latter case we would need to construct a cost function
+# that balanced the number of points trimmed against the summed residuals
+# of the points not trimmed.
