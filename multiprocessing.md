@@ -25,6 +25,6 @@ To illustrate what I've learned about multiprocessing, I've constructed a [wrapp
   %timeit paramfit1_boot_mp.main (40, 4, "s") # to generate 40 data sets and use serial processing (number of processors input is not used)
 ```
 
-Notice that the run time printed by the code itself (computed with `time.clock()`) are not accurate when using multiprocessing.
+Notice that the run times printed by the code itself (computed with `time.clock()`) are not accurate when using multiprocessing.
 
 Incidentally, the plot made by the above codes is actually interesting: it tests how bootstrap uncertainties compare to uncertainties derived more precisely, when averaged over many different randomly generated data sets. That is, the plot looks at the "errors on the errors" from bootstrapping. Examining the plot, how far off do bootstrap uncertainties get for any one data set? Averaged over many data sets, are they biased (meaning they generally run low or high)? What do you notice about the errors on the uncertainties in the slope vs. in the intercept?
