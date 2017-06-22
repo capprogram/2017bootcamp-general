@@ -1,6 +1,10 @@
 """
 Time test code from Sheridan Green's Python Multiprocessing jupyter notebook
 https://github.com/galastrostats/general/blob/master/PythonMultiprocessing.ipynb
+
+Minimally modified by Sheila Kannappan June 2017 to allow the user to enter 
+%timeit stt.main(nproc)
+on the ipython command line, where nproc is between 1 and N-1 for an N-core machine
 """
 
 import multiprocessing
