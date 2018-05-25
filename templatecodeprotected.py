@@ -35,13 +35,13 @@ different outcomes (values of x), so the whole function integrates to the
 sum of all possible probabilities, 1.
 
 An example of a Poisson process is counting the # of people who use the gym per
-hour where the count is run for nhr = different times. We assume the underlying
-average users per hour U is fixed but the counts have "Poisson fluctuations"
-so N = nhr x U specifies the *expected* count (the mean of the theoretical
-Poisson distribution) not the observed count Nobs, whose possible values have 
-different probabilities following a Poisson distribution with mean N. (In fact
-nhr may need to be very large for N to exactly equal Nobs, because Nobs is by
-definition an integer whereas U is by definition a real number.)
+hour where the count is run for a period of time nhr (set to = different times). 
+We assume the underlying average users per hour U is fixed but the counts have 
+"Poisson fluctuations" so N = nhr x U specifies the *expected* count (the mean 
+of the theoretical Poisson distribution) not the observed count Nobs, whose 
+possible values have different probabilities following a Poisson distribution 
+with mean N. (In fact nhr may need to be very large for N to exactly equal Nobs, 
+because Nobs is by definition an integer, but U is by definition a real number.)
 
 Statistical theory tells us that for a Poisson process, the observed count Nobs 
 fluctuates around the true theoretical mean N with a 68% confidence interval of 
