@@ -29,7 +29,10 @@ import scipy.stats as stats     # statistical functions
 
 """
 Just for fun, this code will explore the Central Limit Theorem by comparing 
-Poisson distributions with Gaussian distributions.
+Poisson distributions with Gaussian distributions.  A "distribution" is a 
+function giving the probabilities (plotted on the y axis) associated with 
+different outcomes (values of x), so the whole function integrates to the 
+sum of all possible probabilities, 1.
 
 An example of a Poisson process is counting the # of people who use the gym per
 hour where the count is run for nhr = different times. We assume the underlying
@@ -64,14 +67,14 @@ def gaussfunc(xvals, mean, sigma):
     return y
 
 U = 8. # underlying rate of gym users per hour
-N = np.array([6, 36, 216, 1296]) # total number of people counted (powers of 6)
-nhr = N/U # time to count this many people
+Nct = np.array([6, 36, 216, 1296]) # total number of people counted (powers of 6)
+nhr = Nct/U # time to count this many people
 #labelarr = ["count for %s hr" % ihr for ihr in nhr]
 
-for i in xrange(0, len(N)):
+for i in xrange(0, len(Nct)):
     
     # plot probabilities of count values for range around mean
-    mean = N[i]
+    mean = Nct[i]
     maxval = 2*mean
     xvals=np.arange(0, maxval)
     def poissonfunc(xvals, mean):
@@ -105,8 +108,9 @@ https://pythonconquerstheuniverse.wordpress.com/category/python-debugger/
 Check the size and contents of the variables at each step to determine 
 whether they make sense. Useful commands include print, len(), and 
 np.size(). WATCH OUT: the very first bug you need to find is one that
-makes pdb not even work properly -- why does this code mess up how
-the next line ("n") command works in pdb?
+can make pdb not even work (it will work for some python installations
+and not others) -- how does this code create ambiguity in the meaning
+of "n" for pdb?
 
 Task 2: We don't always want to optimize code speed -- sometimes it's
 just not important -- but you should be in the habit of avoiding 
