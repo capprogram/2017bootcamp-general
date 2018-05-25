@@ -14,6 +14,7 @@ The default scipy stack is already installed on the with anaconda, all we have t
 
 Though there are version of AstroML available through the conda channels, it is a little outdated, we will instead install the latest version available through github. To do this type
 
+    conda install git
     pip install git+https://github.com/astroML/astroML
     
 To verify you have the appropriate packages installed you can run
