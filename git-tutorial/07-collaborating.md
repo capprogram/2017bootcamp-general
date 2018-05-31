@@ -29,16 +29,16 @@ $ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
 Replace 'vlad' with the Owner's username.
 
 ### Protect master
-Now both the Collaborator and the Owner have a local copy of the master branch of the repository. However neither of them should make changes to the master, instead they should work on personal branches. To protect the master from getting unreviewed changes, you can protect your master branch. To do this
+Now both the Collaborator and the Owner have a local copy of the master branch of the repository. However neither of them should make changes to the master, instead they should work on personal branches. To protect the master from getting unreviewed changes, the Owner can protect the master branch. To do this
 
 1. Owner should navigate to the main page of the repository on github.
-2. Under your repository name, click Settings.
+2. Under the repository name, click Settings.
 3. In the left menu, click Branches.
-4. Under Protected Branches, select the master branch.
-5. Select Protect this branch, and click Save changes.
+4. Under Branch Protection Rules, select the master branch.
+5. Select "Protect this branch" and also "Require pull request reviews before merging", and click Save changes.
 
 ## Make changes to a branch
-Make a branch of the Collaborator's (Wolfman's) local master and switch to it
+The Collaborator should make a branch of the Collaborator's local master and switch to it
 
 ```
 git branch wolfman-pluto
@@ -113,7 +113,7 @@ Fast-forward
 
 Now the three repositories (Owner's local, Collaborator's local, and Owner's on GitHub) are back in sync.
 
-The owner can now make a different branch, `vlad-saturn` and repeat the pull request. 
+Since the Owner (vlad) has protected the master branch, in order to modify files the owner should also make a branch, e.g., `vlad-saturn`, and perform a pull request when ready to merge changes into master.
 
 ### Switch Roles and Repeat
 
