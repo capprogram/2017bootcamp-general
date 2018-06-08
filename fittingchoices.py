@@ -56,8 +56,9 @@ plt.plot(xx,yy,'r')
 
 # add random and systematic errors
 syserr = np.zeros(ndata)
-syserr[npr.randint(0,99,size=5)] = 2.
-syserr[npr.randint(0,99,size=5)] = 3.
+dummy = np.arange(0,100)
+syserr[npr.choice(dummy,size=5,replace=False)] = 2.
+syserr[npr.choice(dummy,size=5,replace=False)] = 3.
 sigma = 1.
 yyscat = yy + npr.normal(0,sigma,ndata) + syserr
 
