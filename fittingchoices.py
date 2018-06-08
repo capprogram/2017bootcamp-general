@@ -57,9 +57,9 @@ plt.plot(xx,yy,'r')
 # add random and systematic errors
 syserr = np.zeros(ndata)
 dummy = np.arange(0,100)
-syserr[npr.choice(dummy,size=5,replace=False)] = 2.
-syserr[npr.choice(dummy,size=5,replace=False)] = 3.
-sigma = 1.
+syserr[npr.choice(dummy,size=5,replace=False)] = 2. # use choice instead of randint
+syserr[npr.choice(dummy,size=5,replace=False)] = 3. # to avoid duplicates (could still)
+sigma = 1.                                          # have 2 & 3 overlap, but unlikely)
 yyscat = yy + npr.normal(0,sigma,ndata) + syserr
 
 # compute and plot forward and inverse fits
