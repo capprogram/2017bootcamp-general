@@ -64,7 +64,7 @@ The probability of a point having a given radius increases with the area of the 
 
 **Exercise 2:** Use numpy&#39;s version of _random_ to select values from a Gaussian distribution using inverse transform sampling. In this exercise you are essentially recreating _random.gauss_. Hint: the integral of a Gaussian function centered on 0 is
 
-<img src="https://latex.codecogs.com/png.latex?\int_{-\infty}^u\frac{1}{\sigma\sqrt{2\pi}}\exp{\left(-\frac{u^2}{2\sigma^2}\right)}du=0.5+0.5&space;erf(u/\sqrt{2})" />
+<img src="https://latex.codecogs.com/png.latex?\int_{-\infty}^u\frac{1}{\sigma\sqrt{2\pi}}\exp{\left(-\frac{u^2}{2\sigma^2}\right)}du=0.5+0.5&space;erf(u/{\sqrt{2}\sigma})" />
 
 You can import &quot;erf&quot; from scipy.special.
 
